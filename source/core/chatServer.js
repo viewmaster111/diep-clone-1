@@ -1,6 +1,7 @@
 class chatServer {
-    constructor(config) {
+    constructor(config, serverManager) {
         this.config = config;
+        this.serverManager = serverManager;
         this.messages = [];
     }
 

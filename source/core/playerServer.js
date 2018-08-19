@@ -1,6 +1,7 @@
 class playerServer {
-    constructor(config) {
+    constructor(config, serverManager) {
         this.config = config;
+        this.serverManager = serverManager;
         this.players = [];
     }
 
@@ -9,9 +10,7 @@ class playerServer {
     }
 
     update() {
-        players.forEach(player => {
-            player.update();
-        }
+        this.players.forEach(player => player.update());
     }
 
     getPlayers() {

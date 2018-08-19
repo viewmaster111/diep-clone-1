@@ -2,8 +2,9 @@ const square = require('./../entities/polygons/square.js');
 const triangle = require('./../entities/polygons/triangle.js');
 const pentagon = require('./../entities/polygons/pentagon.js');
 class entityServer {
-    constructor(config) {
+    constructor(config, serverManager) {
         this.config = config;
+        this.serverManager = serverManager;
         this.entities = new Map();
         this.entities.set('squares', []);
         this.entities.set('triangles', []);
