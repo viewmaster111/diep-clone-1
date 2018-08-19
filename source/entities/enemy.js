@@ -1,5 +1,5 @@
 class enemy {
-    constructor(config, x, y, r, d, vel, hp, sdir) {
+    constructor(x, y, r, d, vel, hp, sdir) {
         this.x = x;
         this.y = y;
         this.r = r;
