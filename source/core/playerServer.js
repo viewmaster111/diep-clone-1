@@ -7,7 +7,7 @@ class playerServer {
 
     init() {
         console.log('playerServer Launched');
-        setInterval(() => this.update(this), 1000/60);
+        this.updates = setInterval(() => this.update(this), 1000/60);
     }
 
     update() {

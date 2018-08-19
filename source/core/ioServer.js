@@ -12,7 +12,7 @@ class ioServer {
     init() {
         this.server.on('connection', socket => this.handleConnection(socket));
         this.server.listen(this.config.port);
-        setInterval(() => this.sendData(this), 1000/60);
+        this.updates = setInterval(() => this.sendData(this), 1000/60);
         console.log('ioServer Launched');
     }
 
