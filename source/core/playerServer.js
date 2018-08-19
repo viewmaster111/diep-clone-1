@@ -2,12 +2,15 @@ class playerServer {
     constructor(config, serverManager) {
         this.config = config;
         this.serverManager = serverManager;
+        this.status = 'off';
         this.players = [];
     }
 
     init() {
-        console.log('playerServer Launched');
+        this.status = 'launching';
         this.updates = setInterval(() => this.update(this), 1000/60);
+        console.log('[\x1b[36mConsole\x1b[0m] playerServer Launched');
+        this.status = 'on';
     }
 
     update() {

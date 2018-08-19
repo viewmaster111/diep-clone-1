@@ -2,12 +2,15 @@ class bulletServer {
     constructor(config, serverManager) {
         this.config = config;
         this.serverManager = serverManager;
+        this.status = 'off';
         this.bullets = [];
     }
 
     init() {
-        console.log('bulletServer Launched');
+        this.status = 'launching';
         this.updates = setInterval(() => this.update(this), 1000/60);
+        this.status = 'on';
+        console.log('[\x1b[36mConsole\x1b[0m] bulletServer Launched');
     }
 
     update() {

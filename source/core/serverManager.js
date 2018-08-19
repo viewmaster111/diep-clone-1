@@ -6,6 +6,7 @@ ioServer = require('./ioServer.js');
 class serverManager {
     constructor(config) {
         this.config = config;
+        this.status = 'off';
         this.servers = new Map();
         this.servers.set('chatServer', new chatServer(this.config, this));
         this.servers.set('entityServer', new entityServer(this.config, this));
@@ -14,12 +15,15 @@ class serverManager {
         this.servers.set('ioServer', new ioServer(this.config, this));
     }
 
-    init() {
-        this.servers.get('chatServer').init();
-        this.servers.get('entityServer').init();
-        this.servers.get('playerServer').init();
-        this.servers.get('bulletServer').init();
-        this.servers.get('ioServer').init();
+    async init() {
+        this.status = 'launching';
+        await this.servers.get('chatServer').init();
+        await this.servers.get('entityServer').init();
+        await this.servers.get('playerServer').init();
+        await this.servers.get('bulletServer').init();
+        await this.servers.get('ioServer').init();
+        this.status = 'on';
+        console.log('[\x1b[36mConsole\x1b[0m] serverManager Launched')
     }
 
     getServer(server) {

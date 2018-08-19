@@ -5,16 +5,19 @@ class ioServer {
     constructor(config, serverManager) {
         this.config = config;
         this.serverManager = serverManager;
+        this.status = 'off';
         this.server = new io();
         this.connections = [];
         this.id = 1;
     }
 
     init() {
+        this.status = 'launching';
         this.server.on('connection', socket => this.handleConnection(socket));
         this.server.listen(this.config.port);
         this.updates = setInterval(() => this.sendData(this), 1000/60);
-        console.log('ioServer Launched');
+        this.status = 'on';
+        console.log('[\x1b[36mConsole\x1b[0m] ioServer Launched');
     }
 
     handleConnection(socket) {

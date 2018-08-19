@@ -2,11 +2,14 @@ class chatServer {
     constructor(config, serverManager) {
         this.config = config;
         this.serverManager = serverManager;
+        this.status = 'off';
         this.messages = [];
     }
 
     init() {
-        console.log('chatServer Launched');
+        this.status = 'launching';
+        this.status = 'on';
+        console.log('[\x1b[36mConsole\x1b[0m] chatServer Launched');
     }
 
     getMessages() {

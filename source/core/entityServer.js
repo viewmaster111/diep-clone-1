@@ -5,6 +5,7 @@ class entityServer {
     constructor(config, serverManager) {
         this.config = config;
         this.serverManager = serverManager;
+        this.status = 'off';
         this.entities = new Map();
         this.entities.set('squares', []);
         this.entities.set('triangles', []);
@@ -12,8 +13,10 @@ class entityServer {
     }
 
     init() {
+        this.status = 'launching';
         this.updates = setInterval(() => this.update(this), 1000 / 60);
-        console.log('entityServer Launched');
+        this.status = 'on';
+        console.log('[\x1b[36mConsole\x1b[0m] entityServer Launched');
     }
 
     getEntities(entities) {
