@@ -2,8 +2,8 @@ const enemy = require('../enemy.js');
 class square extends enemy {
     constructor(config, x, y, r, d, vel, sdir) {
         super(
-        x || ~~(Math.random() * (config.w - 199) + 100), // x
-        y || ~~(Math.random() * (config.h - 199) + 100), //y
+        x || ~~(Math.random() * (config.width - 199) + 100), // x
+        y || ~~(Math.random() * (config.height - 199) + 100), //y
         r || ~~(Math.random() * 360), // r
         d || 35, // d
         vel || [0, 0], // vel

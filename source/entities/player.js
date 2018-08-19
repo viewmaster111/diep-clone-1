@@ -1,3 +1,4 @@
+const config = require('./../../config.js');
 class player {
     constructor(id, ip, sid) {
         this.nick = '';
