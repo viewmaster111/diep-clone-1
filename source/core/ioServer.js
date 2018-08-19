@@ -29,4 +29,4 @@ class ioServer {
     }
 }
 
-module.exports = ioServer
+module.exports = ioServer;
