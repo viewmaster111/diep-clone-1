@@ -25,11 +25,7 @@ class playerServer {
         this.players.push(player);
     }
 
-    addPlayers(players) {
-        this.players.push(players);
-    }
-
-    delPlayer(player) {
+    removePlayer(player) {
         this.players.splice(player, 1);
     }
 };

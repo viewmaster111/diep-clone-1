@@ -23,7 +23,7 @@ class ioServer {
     }
     handleDisconnect(data) {
         if(socket.user !== undefined){
-            this.serverManager.getServer('playerServer').delPlayer(this.serverManager.getServer('playerServer').getPlayers().indexOf(socket.user));
+            this.serverManager.getServer('playerServer').removePlayer(this.serverManager.getServer('playerServer').getPlayers().indexOf(socket.user));
         }
         connections.splice(connections.indexOf(socket), 1);
     }
