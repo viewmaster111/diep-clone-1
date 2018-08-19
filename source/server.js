@@ -2,7 +2,7 @@ const serverManager = require('./core/serverManager.js');
 class server {
     constructor(config) {
         this.config = config;
-        this.serverManager = new serverManager();
+        this.serverManager = new serverManager(this.config);
     }
 
     init() {
@@ -10,4 +10,5 @@ class server {
         this.serverManager.init();
     }
 };
+
 module.exports = server;

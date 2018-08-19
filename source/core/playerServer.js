@@ -1,5 +1,6 @@
 class playerServer {
-    constructor() {
+    constructor(config) {
+        this.config = config;
         this.players = [];
     }
 
