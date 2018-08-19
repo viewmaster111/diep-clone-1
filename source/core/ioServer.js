@@ -18,7 +18,7 @@ class ioServer {
     handleConnection(socket) {
         this.connections.push(socket)
         socket.user = new entities.player(this.id, socket.request.client._peername.address, socket.id);
-        core.playerServer.addPlayer(socket.user);
+        this.serverManager.getServer('playerServer').addPlayer(socket.user);
         this.id++;
     }
     handleDisconnect(data) {
@@ -26,7 +26,7 @@ class ioServer {
             this.serverManager.getServer('playerServer').delPlayer(this.serverManager.getServer('playerServer').getPlayers().indexOf(socket.user));
         }
         connections.splice(connections.indexOf(socket), 1);
-      }
+    }
 }
 
 module.exports = ioServer
