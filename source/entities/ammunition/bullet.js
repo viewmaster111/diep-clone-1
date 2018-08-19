@@ -15,16 +15,15 @@ class bullet {
         this.dying = false;
     }
 
-    update() {
+    update(bulletServer) {
         this.x += this.xd * this.speed;
         this.y += this.yd * this.speed;
         this.t++;
-        if(this.t >= 500 && this.dying === false) this.dying = true;
+        if(this.t >= 300 && this.dying === false) this.dying = true;
         if(this.dying) {
             this.transparency += 0.15;
             this.d += 1.75;
         }
-        if(this.transparency >= 1) bulletServer.getBullets().splice(bulletServer.getBullets().indexOf(this), 1);
     }
 };
 

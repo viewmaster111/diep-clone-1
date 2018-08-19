@@ -1,5 +1,6 @@
 const io = require('socket.io');
-const player = require('./../entities/player.js')
+const player = require('./../entities/player.js');
+const bullet = require('./../entities/ammunition/bullet.js');
 class ioServer {
     constructor(config, serverManager) {
         this.config = config;
@@ -17,8 +18,8 @@ class ioServer {
     }
 
     handleConnection(socket) {
-        console.log('connection!')
-        this.connections.push(socket)
+        console.log('connection!');
+        this.connections.push(socket);
         socket.user = new player(this.id, socket.request.client._peername.address, socket.id);
         this.serverManager.getServer('playerServer').addPlayer(socket.user);
         this.sendData();
@@ -53,15 +54,26 @@ class ioServer {
         socket.on('stop chatting', () => {
             if(socket.user.playing) this.serverManager.getServer('playerServer').getPlayers()[this.serverManager.getServer('playerServer').getPlayers().indexOf(socket.user)].chatting = false;
         });
+
+        socket.on('send message', data => {
+            if(!socket.user.playing) return;
+            entities.chat('all', socket.user.nick, data)
+            this.serverManager.getServer('chatServer').addMessage(new message({to: 'all', user: socket.user.nick, msg: data}));
+        });
+
+        socket.on('new bullet', (xd, yd) => {
+            this.serverManager.getServer('bulletServer').addBullet(new bullet(socket.user.x, socket.user.y, xd, yd, socket.user.stats.bulletSpeed.value, socket.user.id));
+            socket.user.shoot(xd, yd)
+        });
     }
 
     sendData() {
-        this.server.sockets.emit('get messages', this.serverManager.getServer('chatServer').getMessages())
+        this.server.sockets.emit('get messages', this.serverManager.getServer('chatServer').getMessages());
         this.server.sockets.emit('get players', this.serverManager.getServer('playerServer').getPlayers());
     		this.server.sockets.emit('get id', this.id);
-        this.server.sockets.emit('update world', {width: this.config.width, height: this.config.height})
+        this.server.sockets.emit('update world', {width: this.config.width, height: this.config.height});
         this.server.sockets.emit('update enemies', this.serverManager.getServer('entityServer').getEntities('squares'), this.serverManager.getServer('entityServer').getEntities('triangles'), this.serverManager.getServer('entityServer').getEntities('pentagons'));
-        //this.server.sockets.emit('update bullets', this.serverManager.getServer('playerServer').bulletServer.getBullets())
+        this.server.sockets.emit('update bullets', this.serverManager.getServer('bulletServer').getBullets());
     }
 }
 
