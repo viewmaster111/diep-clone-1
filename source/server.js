@@ -6,7 +6,7 @@ class server {
     }
 
     init() {
-        console.log('Launching Server...');
+        console.log('Launching Servers...');
         this.serverManager.init();
     }
 };
