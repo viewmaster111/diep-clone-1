@@ -11,8 +11,8 @@ class entityServer {
     }
 
     init() {
-        console.log('entityServer Launched');
         this.updates = setInterval(() => this.update(this), 1000 / 60);
+        console.log('entityServer Launched');
     }
 
     update() {

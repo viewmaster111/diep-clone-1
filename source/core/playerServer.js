@@ -8,6 +8,12 @@ class playerServer {
         console.log('playerServer Launched');
     }
 
+    update() {
+        players.forEach(player => {
+            player.update();
+        }
+    }
+
     getPlayers() {
         return this.players;
     }
