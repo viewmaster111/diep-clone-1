@@ -1,6 +1,7 @@
-const square = require('./../entities/polygons/square.js');
-const triangle = require('./../entities/polygons/triangle.js');
-const pentagon = require('./../entities/polygons/pentagon.js');
+const square = require('./../entities/polygons/square.js'),
+triangle = require('./../entities/polygons/triangle.js'),
+pentagon = require('./../entities/polygons/pentagon.js');
+
 class entityServer {
     constructor(config, serverManager) {
         this.config = config;

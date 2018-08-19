@@ -1,5 +1,6 @@
-const serverManager = require('./core/serverManager.js');
-const commandList = require('./commands/index.js');
+const serverManager = require('./core/serverManager.js'),
+commandList = require('./commands/index.js');
+
 class server {
     constructor(config) {
         this.config = config;

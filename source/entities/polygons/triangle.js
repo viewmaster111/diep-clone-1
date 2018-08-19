@@ -1,4 +1,5 @@
 const enemy = require('../enemy.js');
+
 class triangle extends enemy {
     constructor(config, x, y, r, d, vel, sdir) {
         super(
