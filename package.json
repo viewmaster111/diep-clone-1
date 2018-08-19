@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/SharkFinPro/diep-clone#readme",
   "dependencies": {
+    "asyncconsole": "^1.3.9",
     "socket.io": "^2.1.1"
   }
 }

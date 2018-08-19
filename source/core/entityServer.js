@@ -16,6 +16,10 @@ class entityServer {
         console.log('entityServer Launched');
     }
 
+    getEntities(entities) {
+        return this.entities.get(entities);
+    }
+
     update() {
         var squares = this.entities.get('squares');
         var triangles = this.entities.get('triangles');
