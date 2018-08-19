@@ -1,6 +1,8 @@
 const enemy = require('../enemy.js');
-module.exports = class square extends enemy {
+class square extends enemy {
     constructor() {
 
     }
-}
+};
+
+module.exports = square;

@@ -1,7 +1,7 @@
 module.exports = {
     /** Client **/
-    title: "SharkFin's Server",
-    maxNameLength: 20,
+    title: "SharkFin's Diep.io Clone",
+    maxNameLength: 25,
 
     /** Chat **/
     chatMaxMessageLength: 100,

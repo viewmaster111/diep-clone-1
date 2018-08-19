@@ -1,4 +1,4 @@
-module.exports = class drone {
+class drone {
     constructor(x, y, xd, yd, speed, owner) {
         this.x = x;
         this.y = y;
@@ -7,4 +7,6 @@ module.exports = class drone {
     update() {
 
     }
-}
+};
+
+module.exports = drone;

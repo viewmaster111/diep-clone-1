@@ -1,5 +1,4 @@
-const config = require('../core/configService.js').getConfig();
-module.exports = class enemy {
+class enemy {
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -16,4 +15,6 @@ module.exports = class enemy {
     update() {
 
     }
-}
+};
+
+module.exports = enemy;

@@ -1,11 +1,15 @@
-class entityServer = {
+class entityServer {
     constructor() {
         this.entities = new Map();
     }
 
-    update() {
-        
+    init() {
+        console.log('entityServer Launched');
     }
-}
+
+    update() {
+
+    }
+};
 
 module.exports = entityServer;

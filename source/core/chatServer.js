@@ -1,7 +1,11 @@
-class chatServer = {
+class chatServer {
     constructor(config) {
         this.config = config;
         this.messages = [];
+    }
+
+    init() {
+        console.log('chatServer Launched');
     }
 
     getMessages() {
@@ -21,4 +25,5 @@ class chatServer = {
         this.messages = [];
     }
 };
+
 module.exports = chatServer;

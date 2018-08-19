@@ -1,6 +1,10 @@
-class playerServer = {
+class playerServer {
     constructor() {
         this.players = [];
+    }
+
+    init() {
+        console.log('playerServer Launched');
     }
 
     getPlayers() {
