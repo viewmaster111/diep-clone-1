@@ -1,5 +1,6 @@
 const bulletServer = require('./bulletServer.js'),
 chatServer = require('./chatServer.js'),
+clientServer = require('./clientServer.js'),
 collisionServer = require('./collisionServer.js'),
 entityServer = require('./entityServer.js'),
 ioServer = require('./ioServer.js'),
@@ -12,6 +13,7 @@ class serverManager {
         this.servers = new Map();
         this.servers.set('bulletServer', new bulletServer(this.config, this));
         this.servers.set('chatServer', new chatServer(this.config, this));
+        this.servers.set('clientServer', new clientServer(this.config, this));
         this.servers.set('collisionServer', new collisionServer(this.config, this));
         this.servers.set('entityServer', new entityServer(this.config, this));
         this.servers.set('ioServer', new ioServer(this.config, this));
@@ -26,6 +28,7 @@ class serverManager {
         await this.servers.get('bulletServer').init();
         await this.servers.get('collisionServer').init();
         await this.servers.get('ioServer').init();
+        await this.servers.get('clientServer').init();
         this.status = 'on';
         console.log('[\x1b[36mConsole\x1b[0m] serverManager Launched');
     }

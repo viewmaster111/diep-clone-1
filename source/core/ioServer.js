@@ -6,7 +6,7 @@ class ioServer {
         this.config = config;
         this.serverManager = serverManager;
         this.status = 'off';
-        this.server = new io();
+        this.server = require('socket.io').listen(this.serverManager.getServer('clientServer').server);
         this.connections = [];
         this.id = 1;
     }
@@ -14,7 +14,6 @@ class ioServer {
     init() {
         this.status = 'launching';
         this.server.on('connection', socket => this.handleConnection(socket));
-        this.server.listen(this.config.port);
         this.updates = setInterval(() => this.sendData(this), 1000/60);
         this.status = 'on';
         console.log('[\x1b[36mConsole\x1b[0m] ioServer Launched');
