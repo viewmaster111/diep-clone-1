@@ -21,7 +21,6 @@ class ioServer {
     }
 
     handleConnection(socket) {
-        console.log('connection!');
         this.connections.push(socket);
         socket.user = new player(this.id, socket.request.client._peername.address, socket.id);
         this.serverManager.getServer('playerServer').addPlayer(socket.user);
@@ -39,8 +38,8 @@ class ioServer {
         socket.on('join game', (data, callback) => {
             if(socket.user.playing) return;
             this.serverManager.getServer('playerServer').getPlayers()[this.serverManager.getServer('playerServer').getPlayers().indexOf(socket.user)].nick = data;
-            this.serverManager.getServer('playerServer').getPlayers()[this.serverManager.getServer('playerServer').getPlayers().indexOf(socket.user)].x = ~~(Math.random() * (this.config.w - 199) + 100);
-            this.serverManager.getServer('playerServer').getPlayers()[this.serverManager.getServer('playerServer').getPlayers().indexOf(socket.user)].y = ~~(Math.random() * (this.config.h - 199) + 100);
+            this.serverManager.getServer('playerServer').getPlayers()[this.serverManager.getServer('playerServer').getPlayers().indexOf(socket.user)].x = ~~(Math.random() * (this.config.width - 199) + 100);
+            this.serverManager.getServer('playerServer').getPlayers()[this.serverManager.getServer('playerServer').getPlayers().indexOf(socket.user)].y = ~~(Math.random() * (this.config.height - 199) + 100);
             this.serverManager.getServer('playerServer').getPlayers()[this.serverManager.getServer('playerServer').getPlayers().indexOf(socket.user)].playing = true;
             this.sendData();
         });
