@@ -23,7 +23,7 @@ class serverManager {
         await this.servers.get('bulletServer').init();
         await this.servers.get('ioServer').init();
         this.status = 'on';
-        console.log('[\x1b[36mConsole\x1b[0m] serverManager Launched')
+        console.log('[\x1b[36mConsole\x1b[0m] serverManager Launched');
     }
 
     getServer(server) {
