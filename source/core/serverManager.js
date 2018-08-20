@@ -3,6 +3,7 @@ entityServer = require('./entityServer.js'),
 playerServer = require('./playerServer.js'),
 bulletServer = require('./bulletServer.js'),
 ioServer = require('./ioServer.js');
+
 class serverManager {
     constructor(config) {
         this.config = config;
