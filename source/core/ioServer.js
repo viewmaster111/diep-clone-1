@@ -59,8 +59,7 @@ class ioServer {
 
         socket.on('send message', data => {
             if(!socket.user.playing) return;
-            entities.chat('all', socket.user.nick, data)
-            this.serverManager.getServer('chatServer').addMessage(new message({to: 'all', user: socket.user.nick, msg: data}));
+            this.serverManager.getServer('chatServer').addMessage({to: 'all', user: socket.user.nick, msg: data});
         });
 
         socket.on('new bullet', (xd, yd) => {
