@@ -1,3 +1,4 @@
 module.exports = {
-    help: () => console.log('-- help --'),
+    help: require('./library/help.js'),
+    exit: require('./library/exit.js')
 };
