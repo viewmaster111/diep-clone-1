@@ -19,7 +19,15 @@ class ioServer {
         console.log('[\x1b[36mConsole\x1b[0m] ioServer Launched');
     }
 
+    async shutdown() {
+        this.status = 'closing';
+        this.server.close();
+        this.status = 'off';
+        console.log('[\x1b[36mConsole\x1b[0m] childManager Closed');
+    }
+
     handleConnection(socket) {
+        if(this.status !== 'on') return;
         this.connections.push(socket);
         socket.user = new player(this.id, socket.request.client._peername.address, socket.id);
         this.serverManager.getServer('playerServer').addPlayer(socket.user);
@@ -68,6 +76,7 @@ class ioServer {
     }
 
     sendData() {
+        if(this.status !== 'on') return
         this.server.sockets.emit('get messages', this.serverManager.getServer('chatServer').getMessages());
         this.server.sockets.emit('get players', this.serverManager.getServer('playerServer').getPlayers());
     		this.server.sockets.emit('get id', this.id);

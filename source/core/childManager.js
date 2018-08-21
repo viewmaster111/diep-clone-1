@@ -2,7 +2,7 @@ class childManager {
     constructor(config) {
         this.config = config;
         this.status = 'off';
-        this.servers = new Map();
+        this.children = new Map();
     }
 
     init() {
@@ -11,8 +11,15 @@ class childManager {
         console.log('[\x1b[36mConsole\x1b[0m] childManager Launched');
     }
 
-    getServer(server) {
-        return this.servers.get(server);
+    async shutdown() {
+        this.status = 'closing';
+        this.status = 'off';
+        console.log('[\x1b[36mConsole\x1b[0m] childManager Closed');
+    }
+
+    getChild(child) {
+        if(this.status !== 'on') return
+        return this.children.get(server);
     }
 };
 

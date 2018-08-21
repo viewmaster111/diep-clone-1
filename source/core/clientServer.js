@@ -18,6 +18,13 @@ class clientServer {
         this.status = 'on';
         console.log('[\x1b[36mConsole\x1b[0m] clientServer Launched');
     }
+
+    async shutdown() {
+        this.status = 'closing';
+        await this.server.close();
+        this.status = 'off';
+        console.log('[\x1b[36mConsole\x1b[0m] clientServer Closed');
+    }
 }
 
 module.exports = clientServer;

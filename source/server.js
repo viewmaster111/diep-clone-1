@@ -13,10 +13,18 @@ class server {
         await this.serverManager.init();
         console.log(`[\x1b[36mConsole\x1b[0m] Server running node ${process.version} On port ${this.config.port}`);
         var cmds = new (require('asyncconsole'))(' > ', data => {
+            if(data === 'close') this.shutdown()
             var msg = data.trim().toString().split(" ");
             for (var i in commandList) if(i === msg[0]) commandList[i](msg)
         });
         this.status = 'on';
+    }
+
+    async shutdown() {
+        this.status = 'closing';
+        await this.serverManager.shutdown();
+        this.status = 'off';
+        process.exit(0);
     }
 };
 

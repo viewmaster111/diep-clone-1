@@ -20,11 +20,20 @@ class entityServer {
         console.log('[\x1b[36mConsole\x1b[0m] entityServer Launched');
     }
 
+    async shutdown() {
+        this.status = 'closing';
+        await clearInterval(this.updates);
+        this.status = 'off';
+        console.log('[\x1b[36mConsole\x1b[0m] entityServer Closed');
+    }
+
     getEntities(entities) {
+        if(this.status !== 'on') return
         return this.entities.get(entities);
     }
 
     update() {
+        if(this.status !== 'on') return
         var squares = this.entities.get('squares');
         var triangles = this.entities.get('triangles');
         var pentagons = this.entities.get('pentagons');

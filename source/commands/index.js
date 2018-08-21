@@ -1,3 +1,3 @@
 module.exports = {
-    help: () => console.log('-- help --')
+    help: () => console.log('-- help --'),
 };

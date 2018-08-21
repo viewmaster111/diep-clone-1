@@ -36,6 +36,21 @@ class serverManager {
         console.log('[\x1b[36mConsole\x1b[0m] serverManager Launched');
     }
 
+    async shutdown() {
+        this.status = 'closing';
+        await this.servers.get('clientServer').shutdown();
+        await this.servers.get('ioServer').shutdown();
+        await this.servers.get('collisionServer').shutdown();
+        await this.servers.get('chatServer').shutdown();
+        await this.servers.get('playerServer').shutdown();
+        await this.servers.get('bulletServer').shutdown();
+        await this.servers.get('entityServer').shutdown();
+        await this.servers.get('childManager').shutdown();
+        this.status = 'off';
+        console.log('[\x1b[36mConsole\x1b[0m] serverManager Closed');
+        return true;
+    }
+
     getServer(server) {
         return this.servers.get(server);
     }

@@ -48,7 +48,7 @@ class player {
             },
             movementSpeed: {
                 level: 0,
-                value: 2
+                value: 4
             }
         }
     }
