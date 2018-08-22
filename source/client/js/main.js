@@ -3,7 +3,7 @@ var sketchProc = processingInstance => {
         frameRate(0); //Set The Frame Rate
         textFont(createFont("Ubuntu"));
 
-        var socket = io.connect('http://localhost:3000'),
+        var socket = io.connect(),
             username = [],
             players = [],
             message = [],
