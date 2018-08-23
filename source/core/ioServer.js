@@ -72,7 +72,7 @@ class ioServer {
 
         socket.on('new bullet', (xd, yd) => {
             this.serverManager.getServer('bulletServer').addBullet(new bullet(socket.user.x, socket.user.y, xd, yd, socket.user.stats.bulletSpeed.value, socket.user.id));
-            socket.user.shoot(xd, yd)
+            socket.user.shoot(xd, yd);
         });
     }
 

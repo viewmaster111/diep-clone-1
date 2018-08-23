@@ -21,6 +21,14 @@ class childManager {
         if(this.status !== 'on') return
         return this.children.get(server);
     }
+
+    createChild() {
+
+    }
+
+    deleteChild() {
+        
+    }
 };
 
 module.exports = childManager;
