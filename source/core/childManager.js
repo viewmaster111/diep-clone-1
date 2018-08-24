@@ -23,11 +23,11 @@ class childManager {
     }
 
     createChild() {
-
+        if(this.status !== 'on') return
     }
 
     deleteChild() {
-        
+        if(this.status !== 'on') return
     }
 };
 
